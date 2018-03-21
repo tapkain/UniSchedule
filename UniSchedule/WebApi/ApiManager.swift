@@ -17,10 +17,10 @@ class ApiManager {
     }
   }
   
-  func schedule(for group: Group, from university: String) -> Promise<Schedule> {
+  func schedule(for group: Group, from university: String) -> Promise<[Lesson]> {
     let url = UniScheduleApi.schedule(group: String(group.id), university: university)
     return URLSession.shared.dataTask(.promise, with: url).compactMap {
-      try JSONDecoder().decode(Schedule.self, from: $0.data)
+      try JSONDecoder().decode([Lesson].self, from: $0.data)
     }
   }
   

@@ -7,5 +7,5 @@
 //
 
 class Schedule: Codable {
-  var lessons = [Lesson]()
+  var lessons: [Lesson]?
 }

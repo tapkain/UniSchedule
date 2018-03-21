@@ -7,11 +7,11 @@
 //
 
 class Lesson: Codable {
-  var lessonNumber = 0
-  var week = 0
-  var day = 0
-  var subgroup = ""
-  var type = ""
-  var name = ""
-  var teacher = ""
+  var lessonNumber: Int?
+  var week: Int?
+  var day: Int?
+  var subgroup: Int?
+  var type: String?
+  var name: String?
+  var teacher: String?
 }

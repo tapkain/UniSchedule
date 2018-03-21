@@ -28,8 +28,8 @@ class ApiManagerSpec: QuickSpec {
           manager.universities().map { uni in
             expect(uni.first!).to(equal(ApiManagerSpec.uni))
             done()
-          }.catch {_ in
-            fail()
+          }.catch { error in
+            fail(error.localizedDescription)
           }
         }
       }
@@ -53,7 +53,7 @@ class ApiManagerSpec: QuickSpec {
       it("should fetch groups from api") {
         waitUntil(timeout: 10) { done in
           manager.schedule(for: group, from: ApiManagerSpec.uni).map { schedule in
-            expect(!schedule.lessons.isEmpty).to(beTrue())
+            expect(!schedule.lessons!.isEmpty).to(beTrue())
             done()
           }.catch { error in
             fail(error.localizedDescription)
