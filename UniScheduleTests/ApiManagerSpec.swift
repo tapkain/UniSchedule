@@ -52,8 +52,8 @@ class ApiManagerSpec: QuickSpec {
     describe("Fetch schedule") {
       it("should fetch groups from api") {
         waitUntil(timeout: 10) { done in
-          manager.schedule(for: group, from: ApiManagerSpec.uni).map { schedule in
-            expect(!schedule.lessons!.isEmpty).to(beTrue())
+          manager.schedule(for: group, from: ApiManagerSpec.uni).map { lessons in
+            expect(!lessons.isEmpty).to(beTrue())
             done()
           }.catch { error in
             fail(error.localizedDescription)

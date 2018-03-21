@@ -8,8 +8,13 @@
 
 import Foundation
 
+enum Environment: String {
+  case debug = "http://127.0.0.1:5000/api/v1"
+  case release = "https://unischeduleapi.herokuapp.com/api/v1"
+}
+
 struct UniScheduleApi {
-  private static let baseURL = "https://unischeduleapi.herokuapp.com/api/v1"
+  private static let baseURL = Environment.debug.rawValue
   
   static func uni() -> URL {
     return (URLComponents(string: "\(baseURL)/universities")?.url)!
@@ -22,7 +27,7 @@ struct UniScheduleApi {
   }
   
   static func schedule(group: String, university: String) -> URL {
-    var url = URLComponents(string: "\(baseURL)/groups")
+    var url = URLComponents(string: "\(baseURL)/schedule")
     url?.queryItems = [
       URLQueryItem(name: "university", value: university),
       URLQueryItem(name: "group_id", value: group)
